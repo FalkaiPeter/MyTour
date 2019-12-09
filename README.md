@@ -1,0 +1,2 @@
+# MyTour
+Utazós socialplatform
