@@ -11,6 +11,13 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { DiscoverComponent } from './pages/discover/discover.component';
 import { PlanningComponent } from './pages/planning/planning.component';
 import { MaterialModule } from './modules/material.module';
+import { FormsModule } from '@angular/forms';
+import { AngularFireModule} from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth'
+import { AngularFirestoreModule} from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
+import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -20,13 +27,19 @@ import { MaterialModule } from './modules/material.module';
     WelcomeComponent,
     ProfileComponent,
     DiscoverComponent,
-    PlanningComponent
+    PlanningComponent,
+    RegisterFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
     MaterialModule,
+    FormsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],
   bootstrap: [AppComponent]

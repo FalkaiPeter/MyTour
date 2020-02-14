@@ -12,7 +12,7 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$MyTourApp-primary: mat-palette($mat-indigo);
+$MyTourApp-primary: mat-palette($mat-blue-grey);
 $MyTourApp-accent: mat-palette($mat-pink, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
@@ -29,4 +29,17 @@ $MyTourApp-theme: mat-light-theme($MyTourApp-primary, $MyTourApp-accent, $MyTour
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #E7E7E7;}
+
+.welcome-form-field{
+    box-sizing: border-box;
+    font-size: 12px;
+    text-indent: 9px;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    border-radius: 3px;
+    border: 1px solid rgba(0,0,0,.3);
+    placeholder{
+        color: rgba(0,0,0,.45);
+    }
+
+}

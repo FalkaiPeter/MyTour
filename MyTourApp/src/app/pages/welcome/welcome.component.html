@@ -1,1 +1,14 @@
-<p>welcome works!</p>
+<mat-toolbar class="nav">
+    <span class="brand">MyTour</span>
+    <span class="spacer"></span>
+    <form #l="ngForm" (ngSubmit)="login(l)"class="login-form">
+        <input type="email" name="email" ngModel class="login-email welcome-form-field" placeholder="Email">
+        <input type="password" name="password" ngModel class="login-password welcome-form-field" placeholder="Password">
+        <button mat-flat-button class="login-button">LogIn</button>
+    </form>
+</mat-toolbar>
+
+
+<div class="container">
+    <app-register-form></app-register-form>
+</div>

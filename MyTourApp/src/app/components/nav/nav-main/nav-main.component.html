@@ -1,1 +1,30 @@
-<p>nav-main works!</p>
+<div class="nav">
+    <div class="container">
+        <!-- logo-->
+            <form>
+                <input type="text" placeholder="Search...">
+                <mat-icon>search</mat-icon>
+            </form>
+
+        <span class="spacer"></span>
+
+        <div class="user nav-item" *ngIf="(user$|async) as user">
+            <img src="{{user.profilepicture}}" alt="profile-picture">
+            <a class="name">{{user.lastname}}</a>
+        </div>
+
+        <div class="menu">
+            <ul>
+                <li routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="menu-item nav-item">home</li>
+                <li routerLink="/discover" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="menu-item nav-item">discover</li>
+                <li routerLink="/planning" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="menu-item nav-item">planning</li>
+                <li class="menu-item nav-item dropdown-icon" (click) ="drop=!drop" [ngClass]="{'dropdown-icon-active': drop}"><mat-icon>arrow_drop_down</mat-icon>
+                  <div *ngIf="drop" class="dropdown-container">
+                    <a class="dropdown-item">Options</a>
+                    <a class="dropdown-item" (click)="logoutService.logout()">Logout</a>
+                  </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

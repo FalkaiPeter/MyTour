@@ -1,0 +1,32 @@
+<div class="register-form-container">
+    <p class="signup-text">Sign Up</p>
+    <form #f="ngForm" (ngSubmit)="signUp(f)" class="register-form">
+      <div class="register-form-field-container">
+        <mat-icon>person</mat-icon>
+        <input type="text" name="firstname" ngModel class="welcome-form-field" required placeholder="First Name">
+      </div>
+
+      <div class="register-form-field-container">
+        <mat-icon>person</mat-icon>
+        <input type="text" name="lastname" ngModel class="welcome-form-field" required placeholder="Last Name">
+      </div>
+
+      <div class="register-form-field-container">
+        <mat-icon>email</mat-icon>
+        <input type="email" name="email" ngModel class="welcome-form-field" required placeholder="Email">
+      </div>
+
+      <div class="register-form-field-container">
+        <mat-icon>lock</mat-icon>
+        <input type="password" name="password" ngModel class="welcome-form-field" required placeholder="Password">
+      </div>
+
+      <div class="register-form-field-container">
+        <mat-icon>lock</mat-icon>
+        <input type="password" name="confirmpassword" ngModel class="welcome-form-field" required placeholder="Confirm Password">
+      </div>
+
+      <button mat-flat-button class="signup-button">Sign Up</button>
+
+    </form>
+</div>

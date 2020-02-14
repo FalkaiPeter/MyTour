@@ -1,36 +1,4 @@
 
-.nav{
-    height:45px;
-    background-color: #607D8B;
-    .brand{
-        font-size: 24px;
-        font-weight: 500;
-        color: white;
-    }
-    .spacer{
-        flex:1 1 auto;
-    }
-    .login-form{
-        height:45px;
-        .login-email,.login-password{
-            height:23px;
-            width:170px;
-            margin: 11px 0px 11px 2px; 
-
-        }
-        .login-button{
-            border-radius: 12px;
-            height: 23px;
-            vertical-align: middle;
-            line-height: normal;
-            font-weight: bold;
-            font-size: 12px;
-            margin-right: 70px;
-            margin-left: 10px;
-        }
-    }
-}
-
 .register-form-container{
     height: 380px;
     width: 342px;
