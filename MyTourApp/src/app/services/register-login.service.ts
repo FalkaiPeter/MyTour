@@ -11,7 +11,7 @@ import {UserFullModel} from '../models/user-full';
 export class RegisterLoginService {
 
 
-  constructor(private db:AngularFirestore, private router:Router, private afauth:AngularFireAuth) { 
+  constructor(private db:AngularFirestore, private router:Router, private afauth:AngularFireAuth) {
 
   }
 

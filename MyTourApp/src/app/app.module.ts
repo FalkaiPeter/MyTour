@@ -18,6 +18,9 @@ import { AngularFirestoreModule} from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { MapComponent } from './components/map/map.component';
+import { AgmCoreModule } from '@agm/core';
+import { ProfileInfoCardComponent } from './components/profile-info-card/profile-info-card.component';
 
 @NgModule({
   declarations: [
@@ -28,13 +31,16 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     ProfileComponent,
     DiscoverComponent,
     PlanningComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    MapComponent,
+    ProfileInfoCardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    AgmCoreModule.forRoot({ apiKey: environment.firebaseConfig.apiKey }),
     AngularFireAuthModule,
     AngularFirestoreModule,
     MaterialModule,

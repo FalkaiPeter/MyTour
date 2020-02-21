@@ -1,0 +1,36 @@
+<div class="profile-info-container" *ngIf="(user$|async) as user">
+
+  <img src="assets/images/blank-profile-picture.svg" alt="PROFILE_PICTURE" class="profile-picture" *ngIf="user == null">
+  <img src="{{user.profilepicture}}" alt="PROFILE_PICTURE" class="profile-picture">
+  <span class="name text user-info-card">{{user.firstname}} {{user.lastname}}</span>
+
+  <div class="follow-info text user-info-card">
+    <div>
+      <span>followers</span>
+      <span class="fcount ">{{user.followers}}</span>
+    </div>
+    <div>
+      <span>followings</span>
+      <span class="fcount">{{user.following}}</span>
+    </div>
+  </div>
+
+
+  <div class="about-button text user-info-card">
+    <div>
+      <span>about</span>
+    </div>
+  </div>
+
+  <div *ngIf="(profileRelation$|async) as profileRelation">
+    <div class="follow-button text user-info-card" *ngIf="profileRelation !== 'self'">
+      <div>
+        <span *ngIf="profileRelation === '!followed'" (click)="follow()">follow</span>
+        <span *ngIf="profileRelation === 'followed'" (click)="unfollow()">unfollow</span>
+      </div>
+    </div>
+  </div>
+
+  <app-map></app-map>
+
+</div>

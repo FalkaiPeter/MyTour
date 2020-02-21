@@ -6,6 +6,7 @@
 
     .container{
         display: grid;
+        background-color: #607D8B;
         grid-template-columns: 33px 260px auto min-content min-content;
         width:900px;
         grid-template-rows: 45px;

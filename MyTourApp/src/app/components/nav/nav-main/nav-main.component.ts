@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { CoreService } from 'src/app/services/core.service';
+import { Component } from '@angular/core';
 import { UserMinimalModel } from 'src/app/models/user-minimal';
-import { Observable, of } from 'rxjs';
-import { RegisterLoginService } from 'src/app/services/register-login.service';
+import { Observable } from 'rxjs';
 import { LogoutService } from 'src/app/services/logout.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-nav-main',
@@ -11,10 +10,10 @@ import { LogoutService } from 'src/app/services/logout.service';
   styleUrls: ['./nav-main.component.scss']
 })
 export class NavMainComponent {
-  drop:boolean = false;
-  user$:Observable<UserMinimalModel>;
-  constructor(private core:CoreService, logoutService: LogoutService) {
-    this.user$ = this.core.getMinimalUser();
+  drop = false;
+  currentUser$: Observable<UserMinimalModel>;
+  constructor(private userService: UserService, public logoutService: LogoutService) {
+    this.currentUser$ = this.userService.getUser();
   }
 
 }

@@ -14,12 +14,9 @@ export class AuthenticationGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       return this.afauth.authState.pipe( map(user =>{
         if(user!= null){
-          //this.router.navigate(['']);
           return true;
         }
-        this.router.navigate(['/welcome'])
-
-        return false ;
+        return this.router.parseUrl('/welcome');
       }))
   }
 

@@ -1,0 +1,9 @@
+<agm-map class="map" [latitude]="0" [longitude]="0" [zoom]="1.4" >
+  <div *ngFor="let mapinfo of markerinfo">
+    <agm-marker class="marker" [latitude]='mapinfo.latitude' [longitude]='mapinfo.longitude'>
+
+    </agm-marker>
+
+  </div>
+
+</agm-map>
