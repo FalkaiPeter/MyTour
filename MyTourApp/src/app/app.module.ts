@@ -21,10 +21,12 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { MapComponent } from './components/map/map.component';
 import { AgmCoreModule } from '@agm/core';
 import { ProfileInfoCardComponent } from './components/profile-info-card/profile-info-card.component';
+import { ShellComponent } from './components/shell/shell.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ShellComponent,
     NavMainComponent,
     HomeComponent,
     WelcomeComponent,
@@ -33,7 +35,7 @@ import { ProfileInfoCardComponent } from './components/profile-info-card/profile
     PlanningComponent,
     RegisterFormComponent,
     MapComponent,
-    ProfileInfoCardComponent
+    ProfileInfoCardComponent,
   ],
   imports: [
     BrowserModule,

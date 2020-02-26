@@ -1,27 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
-import { Observable, of } from 'rxjs';
-import { UserFullModel } from 'src/app/models/user-full';
-import { map, switchMap } from 'rxjs/operators';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { UserService } from 'src/app/services/user/user.service';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { IUser } from 'src/app/models/IUser';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent implements OnInit {
 
-  user$: Observable<UserFullModel>;
-  userID$: Observable<string>;
-  profileRelation$: Observable<string>;
-  cuser$: Observable<UserFullModel>;
-  constructor(private userService: UserService, private route: ActivatedRoute) {
-  }
+export class ProfileComponent implements OnInit, OnDestroy {
+  user$: Observable<[IUser, boolean]>;
+  isFollowed$: Observable<boolean>;
+
+  constructor(private userService: UserService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.user$ = this.userService.getUser(this.route.paramMap.pipe(map(data => data.get('id'))));
-    this.cuser$ = this.userService.getUser();
-    this.userID$ = this.user$.pipe(switchMap(u => of(u.id)));
+   this.user$ = this.route.data.pipe(map(data => data.userData));
+   this.isFollowed$ = this.userService.getFollowRelation(this.route.snapshot.data.userData.id);
+  }
+
+  ngOnDestroy(): void {
+
   }
 }

@@ -10,5 +10,6 @@ export class LogoutService {
 
   logout(){
     this.afauth.auth.signOut();
+    window.location.reload();
   }
 }

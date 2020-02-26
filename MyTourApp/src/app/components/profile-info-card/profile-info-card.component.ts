@@ -1,10 +1,6 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { Observable, of, from } from 'rxjs';
-import { UserFullModel } from 'src/app/models/user-full';
-import { ProfileService } from 'src/app/services/profile.service';
-import { map, switchMap } from 'rxjs/operators';
-import { UserService } from 'src/app/services/user.service';
-import { NavMainComponent } from '../nav/nav-main/nav-main.component';
+import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { IUser } from 'src/app/models/IUser';
 
 @Component({
   selector: 'app-profile-info-card',
@@ -12,33 +8,21 @@ import { NavMainComponent } from '../nav/nav-main/nav-main.component';
   styleUrls: ['./profile-info-card.component.scss']
 })
 export class ProfileInfoCardComponent implements OnInit{
-  @Input() user$: Observable<UserFullModel>;
-  @Input() cuser$: Observable<UserFullModel>;
-  @Input() userID$: Observable<string>;
-  profileRelation$: Observable<string>;
+  @Input() user$: Observable<IUser>;
+  @Input() isFollowed$: Observable<boolean>;
 
-  constructor(private profileService: ProfileService, private userService: UserService) {
+  constructor() {
+  }
+
+  ngOnInit(): void {
 
   }
 
-  ngOnInit() {
-    this.profileRelation$ = this.profileService.getProfileRelation(this.user$, this.cuser$);
+  follow(){
+
   }
 
+  unfollow(){
 
-  follow() {
-    const a = this.cuser$.pipe(switchMap(cuser => {
-      return this.user$.pipe(map(user => {
-        return this.profileService.follow(user.id, cuser.id);
-      }));
-    })).pipe(map(()=> this.profileRelation$ = of('followed'))).subscribe(() =>  a.unsubscribe());
-  }
-
-  unfollow() {
-    const a = this.cuser$.pipe(switchMap(cuser => {
-      return this.user$.pipe(map(user => {
-        return this.profileService.unfollow(user.id, cuser.id);
-      }));
-    })).pipe(map(()=> this.profileRelation$ = of('!followed'))).subscribe(() => a.unsubscribe());
   }
 }

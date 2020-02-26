@@ -22,11 +22,11 @@
     </div>
   </div>
 
-  <div *ngIf="(profileRelation$|async) as profileRelation">
-    <div class="follow-button text user-info-card" *ngIf="profileRelation !== 'self'">
+  <div *ngIf="(isFollowed$|async) as isf">
+    <div class="follow-button text user-info-card" *ngIf="isf !== null">
       <div>
-        <span *ngIf="profileRelation === '!followed'" (click)="follow()">follow</span>
-        <span *ngIf="profileRelation === 'followed'" (click)="unfollow()">unfollow</span>
+        <span *ngIf="!isf" (click)="follow()">follow</span>
+        <span *ngIf="isf" (click)="unfollow()">unfollow</span>
       </div>
     </div>
   </div>

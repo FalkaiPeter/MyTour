@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { RegisterLoginService } from 'src/app/services/register-login.service';
+import { RegisterLoginService } from 'src/app/services/register-login/register-login.service';
 
 
 @Component({
@@ -8,15 +8,12 @@ import { RegisterLoginService } from 'src/app/services/register-login.service';
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.scss']
 })
-export class WelcomeComponent implements OnInit {
+export class WelcomeComponent {
 
-  constructor(private registerLoginService:RegisterLoginService) { }
+  constructor(private registerLoginService: RegisterLoginService) { }
 
-  ngOnInit() {
-  }
 
   login(form: NgForm){
-    console.log(form.value);
     return this.registerLoginService.login(form.value);
   }
 }
